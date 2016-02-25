@@ -91,10 +91,8 @@ install:
       pushd ${OPENCL_ROOT};
       travis_retry git clone --depth 1 https://github.com/KhronosGroup/OpenCL-ICD-Loader.git;
       mv ./OpenCL-ICD-Loader/* .;
-      mkdir -p inc/CL;
+      travis_retry git clone --depth 1 https://github.com/KhronosGroup/OpenCL-Headers.git inc/CL;
       pushd inc/CL;
-      travis_retry git clone --depth 1 https://github.com/KhronosGroup/OpenCL-Headers.git;
-      mv ./OpenCL-Headers/* .;
       travis_retry wget -w 1 -np -nd -nv -A h,hpp ${OPENCL_REGISTRY}/api/2.1/cl.hpp;
       popd;
       mkdir -p lib;
